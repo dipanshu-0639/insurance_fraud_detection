@@ -1,0 +1,16 @@
+stages:
+  make_dataset:
+    cmd: python .\src\data\make_dataset.py
+    deps:
+    - .\data\raw\
+    - .\src\data\make_dataset.py
+  process_data:
+    cmd: python .\src\data\data_preprocessing.py .\data\processed\cleaned_insurance_claims.csv
+    deps:
+    - .\data\processed\cleaned_insurance_claims.csv
+    - .\src\data\data_preprocessing.py
+  train_model:
+    cmd: python .\src\models\train_model.py .\data\processed\encoded_insurance_claims.csv
+    deps:
+    - .\data\processed\encoded_insurance_claims.csv
+    - .\src\models\train_model.py
