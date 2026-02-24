@@ -1,0 +1,22 @@
+data:
+  test_size: 0.2
+  random_state: 42
+
+models:
+
+  decision_tree:
+    max_depth: [3, 5, 7, 10]
+    min_samples_split: [2, 5, 10]
+
+  random_forest:
+    n_estimators: [50, 100, 150]
+    max_depth: [5, 10, 15]
+
+  extra_trees:
+    n_estimators: [50, 100, 150]
+    max_depth: [5, 10, 15]
+
+  xgboost:
+    n_estimators: [50, 100, 150]
+    max_depth: [3, 5, 7]
+    learning_rate: [0.01, 0.1, 0.2]
