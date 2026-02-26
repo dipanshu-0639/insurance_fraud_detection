@@ -32,7 +32,19 @@ def make_dataset(input_path, output_path):
         'auto_make',
         'auto_model',
         'auto_year',
-        '_c39'
+        '_c39',
+        'policy_csl',
+        'insured_education_level',
+        'insured_occupation',
+        'insured_relationship',
+        'months_as_customer',
+        'policy_deductable',
+        'umbrella_limit',
+        'capital-gains',
+        'capital-loss',
+        'incident_hour_of_the_day'
+        
+
     ]
 
     df.drop(columns=to_drop, inplace=True, errors="ignore")

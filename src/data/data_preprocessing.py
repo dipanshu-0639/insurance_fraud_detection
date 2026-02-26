@@ -1,35 +1,57 @@
 import pandas as pd
-import numpy as np
 import os
+import joblib
+
+from sklearn.preprocessing import LabelEncoder
 
 
-def preprocess_data(input_path, output_path):
+def label_encode_data(input_path, output_path, encoder_path):
 
     print("Reading cleaned dataset...")
     df = pd.read_csv(input_path)
+    
 
-    df['fraud_reported'] = df['fraud_reported'].map({'Y': 1,'N': 0})
+    categorical_cols = df.select_dtypes(include="object").columns.tolist()
+  
 
-    print("Target column encoded ")
+    print(f"Categorical columns found: {len(categorical_cols)}")
 
-    target_col = "fraud_reported"
+    encoders = {}
 
-    y = df[target_col]
-    X = df.drop(columns=[target_col])
+    for col in categorical_cols:
 
+        print(f"Encoding: {col}")
 
-    X_encoded = pd.get_dummies( X, drop_first=True)
+        le = LabelEncoder()
 
-    print("Categorical encoding completed ")
+        df[col] = le.fit_transform(df[col])
 
-    final_df = pd.concat([X_encoded, y],axis=1)
+        encoders[col] = le
+
+    print("Label encoding completed ")
+
+    os.makedirs(encoder_path, exist_ok=True)
+
+    for col, encoder in encoders.items():
+
+        joblib.dump(encoder,f"{encoder_path}/{col}_encoder.pkl")
+
+    print("Encoders saved successfully ")
+
 
     os.makedirs(os.path.dirname(output_path),exist_ok=True)
+    
 
-    final_df.to_csv(output_path,index=False)
+    df.to_csv(output_path, index=False)
 
     print(f"Encoded dataset saved at: {output_path} ")
 
+
+
 if __name__ == "__main__":
 
-    preprocess_data(input_path="data/processed/cleaned_insurance_claims.csv",output_path="data/processed/encoded_insurance_claims.csv")
+    label_encode_data(
+        input_path="data/processed/cleaned_insurance_claims.csv",
+        output_path="data/processed/label_encoded_data.csv",
+        encoder_path="models/encoders"
+    )

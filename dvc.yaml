@@ -10,7 +10,7 @@ stages:
     - .\data\processed\cleaned_insurance_claims.csv
     - .\src\data\data_preprocessing.py
   train_model:
-    cmd: python .\src\models\train_model.py .\data\processed\encoded_insurance_claims.csv
+    cmd: python .\src\models\train_model.py .\data\processed\label_encoded_data.csv
     deps:
-    - .\data\processed\encoded_insurance_claims.csv
+    - .\data\processed\label_encoded_data.csv
     - .\src\models\train_model.py

@@ -140,4 +140,4 @@ def find_best_model(data_path):
 
 if __name__ == "__main__":
 
-    find_best_model( "data/processed/encoded_insurance_claims.csv")
+    find_best_model( "data/processed/label_encoded_data.csv")
