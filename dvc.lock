@@ -10,16 +10,16 @@ stages:
       nfiles: 2
     - path: .\src\data\make_dataset.py
       hash: md5
-      md5: 95fa5e1bdd0905d4d28ee09bea646935
-      size: 1692
+      md5: 2e6e3b88559f3a3fe3ac4e942c08d38a
+      size: 1662
   process_data:
     cmd: python .\src\data\data_preprocessing.py 
       .\data\processed\cleaned_insurance_claims.csv
     deps:
     - path: .\data\processed\cleaned_insurance_claims.csv
       hash: md5
-      md5: cb2a115f1f8c36bbb7762f38ff1919b3
-      size: 98480
+      md5: 92667f5ceff2c6ec2967fadbf3a04ba5
+      size: 107054
     - path: .\src\data\data_preprocessing.py
       hash: md5
       md5: 7923fe0d6644b353441afe41de586477
@@ -30,8 +30,8 @@ stages:
     deps:
     - path: .\data\processed\label_encoded_data.csv
       hash: md5
-      md5: da04a92867ef4d02b027b0d0557ee1b6
-      size: 47045
+      md5: f945a4b1f5aa3eef49968ea5b344c8f4
+      size: 51721
     - path: .\src\models\train_model.py
       hash: md5
       md5: 6fe2b7dce402dabcbb161582d64d80c7
