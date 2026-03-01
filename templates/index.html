@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insurance Fraud Detection</title>
+</head>
+
+<body>
+
+<h2>Insurance Fraud Detection</h2>
+
+<form action="/predict" method="post">
+
+<h3>Incident Details</h3>
+
+Incident Type:
+<select name="incident_type">
+{% for item in incident_types %}
+<option value="{{item}}">{{item}}</option>
+{% endfor %}
+</select><br><br>
+
+Collision Type:
+<select name="collision_type">
+{% for item in collision_types %}
+<option value="{{item}}">{{item}}</option>
+{% endfor %}
+</select><br><br>
+
+Incident Severity:
+<select name="incident_severity">
+{% for item in severities %}
+<option value="{{item}}">{{item}}</option>
+{% endfor %}
+</select><br><br>
+
+Authorities Contacted:
+<select name="authorities_contacted">
+{% for item in authorities %}
+<option value="{{item}}">{{item}}</option>
+{% endfor %}
+</select><br><br>
+
+Property Damage:
+<select name="property_damage">
+{% for item in property_damage %}
+<option value="{{item}}">{{item}}</option>
+{% endfor %}
+</select><br><br>
+
+Police Report:
+<select name="police_report_available">
+{% for item in police_reports %}
+<option value="{{item}}">{{item}}</option>
+{% endfor %}
+</select><br><br>
+
+Gender:
+<select name="insured_sex">
+{% for item in genders %}
+<option value="{{item}}">{{item}}</option>
+{% endfor %}
+</select><br><br>
+
+<h3>Numeric Details</h3>
+
+Policy Deductable: <input type="number" name="policy_deductable"><br><br>
+Vehicles Involved: <input type="number" name="number_of_vehicles"><br><br>
+Bodily Injuries: <input type="number" name="bodily_injuries"><br><br>
+Witnesses: <input type="number" name="witnesses"><br><br>
+Injury Claim: <input type="number" name="injury_claim"><br><br>
+Property Claim: <input type="number" name="property_claim"><br><br>
+Vehicle Claim: <input type="number" name="vehicle_claim"><br><br>
+Annual Premium: <input type="number" name="policy_annual_premium"><br><br>
+
+<input type="submit" value="Predict">
+
+</form>
+
+<h3>{{ prediction_text }}</h3>
+
+</body>
+</html>

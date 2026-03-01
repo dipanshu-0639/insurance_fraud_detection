@@ -38,7 +38,6 @@ def make_dataset(input_path, output_path):
         'insured_occupation',
         'insured_relationship',
         'months_as_customer',
-        'policy_deductable',
         'umbrella_limit',
         'capital-gains',
         'capital-loss',
