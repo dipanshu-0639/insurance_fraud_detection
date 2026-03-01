@@ -1,5 +1,5 @@
 outs:
-- md5: b12155dc93ba7ac483a47d38df8f216e
-  size: 3993
+- md5: 5443f9521659f7e747126c78aa5722ac
+  size: 2729
   hash: md5
   path: best_fraud_model.pkl
